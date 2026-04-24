@@ -1,0 +1,6 @@
+name: test_env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - pyyaml=6.0.3

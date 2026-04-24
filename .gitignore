@@ -1,0 +1,8 @@
+# workspace
+.snakemake
+.test/result.*
+.test/apptainer.*
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
