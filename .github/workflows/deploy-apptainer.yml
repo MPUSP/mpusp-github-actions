@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: create apptainer recipe
-        uses: m-jahn/snakemake-github-action@fix_apptainer
+        uses: snakemake/snakemake-github-action@v2
         with:
           directory: .
           snakefile: workflow/Snakefile
