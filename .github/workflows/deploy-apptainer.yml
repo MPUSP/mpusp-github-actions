@@ -11,11 +11,11 @@ jobs:
       packages: write
     steps:
       - name: checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: create dockerfile
+      - name: create apptainer recipe
         uses: snakemake/snakemake-github-action@v2
         with:
           directory: .
@@ -23,15 +23,7 @@ jobs:
           install-apptainer: true
           args: "--cores 1"
           task: containerize
-
-      - name: create apptainer recipe
-        shell: bash
-        run: |
-          pip install spython
-          sed -i "2i RUN apt-get update && apt-get install -y curl" Dockerfile
-          spython recipe Dockerfile > apptainer.def
-          sed -i 's/\/environment.yaml\/environment.yaml$/\/environment.yaml/' apptainer.def
-          sed -i 's/^curl /curl -L /' apptainer.def
+          containerize-args: apptainer
 
       - name: create apptainer image
         shell: bash

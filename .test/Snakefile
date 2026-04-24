@@ -1,0 +1,26 @@
+rule all:
+    input:
+        "result.txt",
+        "result.html",
+
+
+rule test:
+    output:
+        "result.txt",
+    conda:
+        "test_env.yaml"
+    shell:
+        "echo 'This is just a test.' > {output}"
+
+
+rule test_wrapper:
+    input:
+        sample=["input.fastq"],
+    output:
+        html="result.html",
+        json="result.json",
+    log:
+        "result.log",
+    threads: 1
+    wrapper:
+        "v9.5.0/bio/fastp"
