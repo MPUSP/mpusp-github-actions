@@ -6,8 +6,8 @@ platforms = ["linux-64"]
 version = "0.1.0"
 
 [tasks]
-test-workflow = { cmd = "snakemake -d .test -s .test/Snakefile -c 2 --sdm conda" }
-test-containerize = { cmd = "snakemake -d .test -s .test/Snakefile --show-failed-logs --containerize apptainer > .test/apptainer.def" }
+test-workflow = { cmd = "snakemake -d .test -s .test/Snakefile -c 1 --sdm conda" }
+test-containerize = { cmd = "snakemake -d .test -s .test/Snakefile -c 1 --show-failed-logs --containerize apptainer > .test/apptainer.def" }
 test-uidmap = { cmd = "dpkg -l uidmap 2>/dev/null" }
 test-apptainer = { cmd = "cd .test; apptainer build --fakeroot apptainer.sif apptainer.def" }
 
