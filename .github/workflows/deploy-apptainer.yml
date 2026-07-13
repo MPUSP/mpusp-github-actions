@@ -27,9 +27,10 @@ jobs:
 
       - name: create apptainer image
         shell: bash
+        working-directory: .test
         run: |
           sudo apt-get install -y uidmap
-          apptainer build --fakeroot apptainer.sif apptainer.def
+          apptainer build --fakeroot ../apptainer.sif ../apptainer.def
 
       - name: authenticate to GHCR
         run: |
