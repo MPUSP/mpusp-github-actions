@@ -8,9 +8,8 @@ version = "0.1.0"
 [tasks]
 test-workflow = { cmd = "snakemake -d .test -s .test/Snakefile -c 1 --sdm conda" }
 test-containerize = { cmd = "snakemake -d .test -s .test/Snakefile -c 1 --show-failed-logs --containerize apptainer > .test/apptainer.def" }
-test-uidmap = { cmd = "dpkg -l uidmap 2>/dev/null" }
-test-apptainer = { cmd = "cd .test; apptainer build --fakeroot apptainer.sif apptainer.def" }
+test-apptainer = { cmd = 'cd .test; sudo "$(which apptainer)" build apptainer.sif apptainer.def' }
 
 [dependencies]
-snakemake = ">=9.19.0,<10"
-apptainer = ">=1.4.5,<2"
+snakemake = ">=9.27.2,<10"
+apptainer = ">=1.5.4,<2"
